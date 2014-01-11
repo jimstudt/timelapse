@@ -1,0 +1,73 @@
+.Dd 1/6/14               \" DATE
+.Dt timelapse 1      \" Program name and manual section number
+.Os Darwin
+.Sh NAME                 \" Section Header - required - don't modify 
+.Nm timelapse
+.Nd Create a video from still images.
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Nm
+.Fl h
+.Nm
+.Op Fl vn               \" [-vhn]
+.Fl o Ar output       \" [-a path]
+.Op Fl c Ar h264
+.Op Fl p Ar h.264-profile
+.Op Fl l Ar h.264-level
+.Op Fl b Ar bitrate
+path ...             \" arguments
+.Nm
+.Op Fl vn               \" [-vhn]
+.Fl o Ar output       \" [-a path]
+.Fl c Ar jpeg
+.Op Fl q Ar jpeg-quality
+.Op Fl b Ar bitrate
+path ...             \" arguments
+.Nm
+.Op Fl vn               \" [-vhn]
+.Fl o Ar output       \" [-a path]
+.Fl c Ar prores442
+path ...             \" arguments
+.Nm
+.Op Fl vn               \" [-vhn]
+.Fl o Ar output       \" [-a path]
+.Fl c Ar prores4444
+path ...             \" arguments
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+.Nm
+creates a video from a sequence of images using AV Foundation. The path arguments may be files or directories.
+Directories will be recursively traversed. All resulting images are sorted by full path into alphabetical
+order and then assembled into the video.
+.Pp
+Note: Not all codecs are compatible with all file types, e.g. some require a .mov file.
+.Pp
+.Bl -tag -width -indent  \" Differs from above in tag removed
+.It Fl b Ar bitrate , Fl Fl bitrate Ns = Ns Ar bitrate                \"-a flag as a list item
+Set the target bitrate, expressed in megabits per second.
+.It Fl c Ar name , Fl Fl codec Ns = Ns Ar name
+Select the codec for the video file. Supported codecs are h264, jpeg, prores4444, and prores422.
+.It Fl h Fl Fl help
+Display help and version number then exit.
+.It Fl l Ar num , Fl Fl level Ns = Ns Ar num
+Set the h.264 level. Valid choices are 3.0, 3.1, 3.2, 4.0, 4.1 and auto. The default is auto.
+.It Fl n , Fl Fl nodup
+Ignore images which are identical to their predecessor.
+.It Fl o Ar filename , Fl Fl output Ns = Ns Ar filename
+The output filename. This is required. The filename suffix determines the format. Valid extensions are 
+mp4, m4v, and mov. Unrecognized extensions use the MPEG4 filetype.
+.It Fl p Ar name , Fl Fl profile Ns = Ns Ar name
+Set the h.264 profile. Valid choices are baseline, main, and high. The default is main.
+.It Fl q Ar num , Fl Fl quality Ns = Ns Ar num
+Set the JPEG quality. e.g. --quality=0.8
+.It Fl v , Fl Fl verbose
+Print verbose messages while operating.
+.El
+.Pp
+If there is a fatal error, a partially written file may be produced.
+.\" .Sh ENVIRONMENT      \" May not be needed
+.\" .Sh FILES                \" File used or created by the topic of the man page
+.\" .Sh DIAGNOSTICS       \" May not be needed
+.Sh WWW
+The timelapse sources are managed at https://github.com/jimstudt/timelapse
+.\" .Sh SEE ALSO
+.\" .Sh BUGS              \" Document known, unremedied bugs
+.\" .Sh HISTORY           \" Document history if command behaves in a unique manner
