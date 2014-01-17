@@ -232,10 +232,7 @@ int main (int argc, const char * argv[]) {
 
                 // If we have overrun the encoder, then exit. We will get called again
                 // when it is ready.
-                if ( ![writerInput isReadyForMoreMediaData]) {
-                    NSLog(@"was not ready for input at frame %lld", frame);
-                    return;
-                }
+                if ( ![writerInput isReadyForMoreMediaData]) return;
                 
                 // Get our next URL
                 NSURL *file = [urls objectAtIndex:nextUrl++];
