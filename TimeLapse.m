@@ -184,6 +184,14 @@ int main (int argc, const char * argv[]) {
             }
         }
 
+        //
+        // Abort if we have a zero size
+        //
+        if ( size.width == 0 || size.height == 0) {
+            NSLog(@"First image had a zero dimension. Unable to choose an output size.");
+            exit(1);
+        }
+        
         NSString *outputPath = [Options output];
         
         // Delete file if already present
