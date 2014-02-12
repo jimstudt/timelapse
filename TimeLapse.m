@@ -166,6 +166,14 @@ int main (int argc, const char * argv[]) {
         }
         NSArray *urls = walkAndSort(roots);
         
+        //
+        // If there are no inputs, then we can't do anything.
+        //
+        if ( urls.count == 0) {
+            NSLog(@"No input files. Will not create output.");
+            exit(0);
+        }
+        
         // Get size from first available image
         NSSize size = NSZeroSize;
         for (NSURL *file in urls) {
