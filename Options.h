@@ -16,6 +16,7 @@
 +(void)parseArgc:(int *)argc argv:(const char *[])argv ;
 +(BOOL)verbose;
 +(NSString *)output;
++(int) framesPerSecond;
 +(NSString *const)codec;
 +(NSString *const)profile;
 +(NSString *const)level;

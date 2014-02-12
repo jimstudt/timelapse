@@ -156,7 +156,11 @@ int main (int argc, const char * argv[]) {
         
         [Options parseArgc:&argc argv:argv];
 
-        CMTimeValue framesPerSecond = 30;
+        CMTimeValue framesPerSecond = [Options framesPerSecond];
+        if ( framesPerSecond < 1 ) {
+            NSLog(@"Frames per second is less than 1, error");
+            exit(1);
+        }
         
         // Walk the roots and come up with a list of urls to process.
         // We can't pipeline this since it gets sorted.

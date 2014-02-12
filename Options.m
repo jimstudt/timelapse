@@ -18,6 +18,7 @@ static NSString *profile = nil;
 static NSString *level = nil;
 static NSNumber *quality = nil;
 static NSNumber *averageBitRate = nil;
+static int framesPerSecond = 30;
 
 @implementation Options
 
@@ -29,6 +30,7 @@ static NSNumber *averageBitRate = nil;
 +(NSString *const)level { return level; }
 +(NSNumber *const)quality { return quality; }  // jpeg only
 +(NSNumber *const)averageBitRate {return averageBitRate; } // h.264 only
++(int)framesPerSecond { return framesPerSecond; }
 
 static void usage(const char *name, int error)  __attribute__((__noreturn__));
 static void usage(const char *name, int error) {
@@ -39,27 +41,29 @@ static void usage(const char *name, int error) {
     fprintf(f, "Usage: %s -o outfile [options] inputdir_or_images...\n", n);
     fprintf(f,
             "    version " TIMELAPSE_VERSION
-            "  -v | --verbose               verbose output\n"
-            "  -h | --help                  display usage and exit\n"
-            "  -o fname | --output fname    specify output file - required\n"
-            "                               end with .mp4 .m4v or .mov to select format\n"
-            "  -n | --nodups                skip duplicated frames\n"
-            "  -c codec | --codec name      codec name: h264 jpeg prores4444 prores422\n"
-            "  -p profile | --profile name  h.264 profile: baseline main(default) high\n"
-            "  -l level | --level name      h.264 level: 3.0 3.1 3.2 4.0 4.1 auto(default)"
-            "  -b bitrate | --bitrate num   average bit rate in Mbps: e.g. 2.0"
-            "  -q quality | --quality num   jpeg quality: e.g. 0.8");
+            "  -v | --verbose                  verbose output\n"
+            "  -h | --help                     display usage and exit\n"
+            "  -o fname | --output fname       specify output file - required\n"
+            "                                  end with .mp4 .m4v or .mov to select format\n"
+            "  -f fps | --framesPerSecond fps  frames per second, must be an integer, default is 30\n"
+            "  -n | --nodups                   skip duplicated frames\n"
+            "  -c codec | --codec name         codec name: h264 jpeg prores4444 prores422\n"
+            "  -p profile | --profile name     h.264 profile: baseline main(default) high\n"
+            "  -l level | --level name         h.264 level: 3.0 3.1 3.2 4.0 4.1 auto(default)"
+            "  -b bitrate | --bitrate num      average bit rate in Mbps: e.g. 2.0"
+            "  -q quality | --quality num      jpeg quality: e.g. 0.8");
     
     exit( error ? 1 : 0);
 }
 
 +(void)parseArgc:(int *)argc argv:(const char *[])argv
 {
-    static const char *optstring = "v?nho:c:p:l:b:q:";
+    static const char *optstring = "v?nho:f:c:p:l:b:q:";
     static const struct option longopts[] = {
         { "verbose", no_argument, 0, 'v'},
         { "help",    no_argument, 0, 'h'},
         { "output",  required_argument, 0, 'o'},
+        { "framesPerSecond", required_argument, 0, 'f'},
         { "codec",  required_argument, 0, 'c'},
         { "profile",  required_argument, 0, 'p'},
         { "level",  required_argument, 0, 'l'},
@@ -80,6 +84,9 @@ static void usage(const char *name, int error) {
                 break;
             case 'h':
                 usage( argv[0], 0);
+                break;
+            case 'f':
+                framesPerSecond = atoi(optarg);
                 break;
             case 'n':
                 noDups = YES;
