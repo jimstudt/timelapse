@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* TimeLapse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLapse.m; sourceTree = "<group>"; };
 		383B0C9E18AB13A700C2883D /* build-package.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = "build-package.sh"; path = "Packaging/build-package.sh"; sourceTree = "<group>"; };
-		383B0C9F18AB362B00C2883D /* timelapse.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = timelapse.html; sourceTree = "<group>"; };
 		38A9A3AA1880C540002768BE /* Version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		38BCD0D6106DBBD7001322EE /* NOTES.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = NOTES.rtf; sourceTree = "<group>"; };
 		38BCD0D8106DBD81001322EE /* Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Options.h; sourceTree = "<group>"; };
@@ -112,7 +111,6 @@
 				38C168651880BEE600FA1225 /* LICENSE */,
 				38C168661880BEE600FA1225 /* README.md */,
 				C6859EA3029092ED04C91782 /* timelapse.1 */,
-				383B0C9F18AB362B00C2883D /* timelapse.html */,
 				38BCD0D6106DBBD7001322EE /* NOTES.rtf */,
 			);
 			name = Documentation;
