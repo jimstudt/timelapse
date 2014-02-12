@@ -20,7 +20,9 @@ I will not add features until someone asks for them. Feel free to browse the iss
 
 ## Usage
 
-> Insert a link to the man page on github.
+You should look at this copy of the man page: http://htmlpreview.github.com/?https://raw.github.com/jimstudt/timelapse/master/timelapse.html
+
+It is tragically formatted, but you will get the idea.
 
 ## History
 
