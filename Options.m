@@ -40,7 +40,7 @@ static void usage(const char *name, int error) {
     
     fprintf(f, "Usage: %s -o outfile [options] inputdir_or_images...\n", n);
     fprintf(f,
-            "    version " TIMELAPSE_VERSION
+            "    version " TIMELAPSE_VERSION "\n"
             "  -v | --verbose                  verbose output\n"
             "  -h | --help                     display usage and exit\n"
             "  -o fname | --output fname       specify output file - required\n"
@@ -49,9 +49,9 @@ static void usage(const char *name, int error) {
             "  -n | --nodups                   skip duplicated frames\n"
             "  -c codec | --codec name         codec name: h264 jpeg prores4444 prores422\n"
             "  -p profile | --profile name     h.264 profile: baseline main(default) high\n"
-            "  -l level | --level name         h.264 level: 3.0 3.1 3.2 4.0 4.1 auto(default)"
-            "  -b bitrate | --bitrate num      average bit rate in Mbps: e.g. 2.0"
-            "  -q quality | --quality num      jpeg quality: e.g. 0.8");
+            "  -l level | --level name         h.264 level: 3.0 3.1 3.2 4.0 4.1 auto(default)\n"
+            "  -b bitrate | --bitrate num      average bit rate in Mbps: e.g. 2.0\n"
+            "  -q quality | --quality num      jpeg quality: e.g. 0.8\n");
     
     exit( error ? 1 : 0);
 }
