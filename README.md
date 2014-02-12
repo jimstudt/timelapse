@@ -7,8 +7,8 @@ It uses the AV Foundation to create MPEG-4 or Quicktime movies using the H.264, 
 
 ## Downloading
 
-> I'll document this when I figure out where to stash a built package.
-
+You can download a binary installer package from https://github.com/jimstudt/timelapse/releases/ or build it 
+from this archive.
 
 ## Status
 
