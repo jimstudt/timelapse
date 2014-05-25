@@ -20,6 +20,8 @@
 +(NSString *const)codec;
 +(NSString *const)profile;
 +(NSString *const)level;
++(NSNumber *const)width;
++(NSNumber *const)height;
 +(NSNumber *const)quality;  // jpeg only
 +(NSNumber *const)averageBitRate; // h.264 only
 // i skip some h.264 keyframe options

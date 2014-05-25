@@ -16,6 +16,8 @@ static BOOL noDups = NO;
 static NSString *codec = nil;
 static NSString *profile = nil;
 static NSString *level = nil;
+static NSNumber *width = nil;
+static NSNumber *height = nil;
 static NSNumber *quality = nil;
 static NSNumber *averageBitRate = nil;
 static int framesPerSecond = 30;
@@ -27,6 +29,8 @@ static int framesPerSecond = 30;
 +(NSString *)output { return outputName; }
 +(NSString *const)codec { return codec; }
 +(NSString *const)profile {return profile; }
++(NSNumber *const)width{ return width; }
++(NSNumber *const)height { return height; }
 +(NSString *const)level { return level; }
 +(NSNumber *const)quality { return quality; }  // jpeg only
 +(NSNumber *const)averageBitRate {return averageBitRate; } // h.264 only
@@ -43,6 +47,8 @@ static void usage(const char *name, int error) {
             "    version " TIMELAPSE_VERSION "\n"
             "  -v | --verbose                  verbose output\n"
             "  -h | --help                     display usage and exit\n"
+            "  -W | --width                    output width\n"
+            "  -H | --height                   output height\n"
             "  -o fname | --output fname       specify output file - required\n"
             "                                  end with .mp4 .m4v or .mov to select format\n"
             "  -f fps | --framesPerSecond fps  frames per second, must be an integer, default is 30\n"
@@ -58,7 +64,7 @@ static void usage(const char *name, int error) {
 
 +(void)parseArgc:(int *)argc argv:(const char *[])argv
 {
-    static const char *optstring = "v?nho:f:c:p:l:b:q:";
+    static const char *optstring = "v?nho:f:c:p:W:H:l:b:q:";
     static const struct option longopts[] = {
         { "verbose", no_argument, 0, 'v'},
         { "help",    no_argument, 0, 'h'},
@@ -66,6 +72,8 @@ static void usage(const char *name, int error) {
         { "framesPerSecond", required_argument, 0, 'f'},
         { "codec",  required_argument, 0, 'c'},
         { "profile",  required_argument, 0, 'p'},
+        { "width",  required_argument, 0, 'W'},
+        { "height",  required_argument, 0, 'H'},
         { "level",  required_argument, 0, 'l'},
         { "bitrate",  required_argument, 0, 'b'},
         { "quality",  required_argument, 0, 'q'},
@@ -96,6 +104,12 @@ static void usage(const char *name, int error) {
                 break;
             case 'p':
                 profile = @(optarg);
+                break;
+            case 'W':
+                width = @([@(optarg) doubleValue]);
+                break;
+            case 'H':
+                height = @([@(optarg) doubleValue]);
                 break;
             case 'l':
                 level = @(optarg);

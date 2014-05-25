@@ -43,7 +43,7 @@ static NSDictionary *getVideoSettings(NSSize size)
             }
             if (profileLevel != nil) compression[AVVideoProfileLevelKey] = profileLevel;
         }
-        
+        NSLog(@"Selected Sizes: %@, %@", @(size.width), @(size.height));
         return @{ AVVideoCodecKey: AVVideoCodecH264,
                   AVVideoWidthKey: @(size.width),
                   AVVideoHeightKey: @(size.height),
@@ -187,7 +187,12 @@ int main (int argc, const char * argv[]) {
                 break;
             }
         }
-
+        
+        if ( [[Options width] floatValue] > 1 && [[Options height] floatValue] > 1 ) {
+            size = NSMakeSize([[Options width] floatValue], [[Options height] floatValue]);
+            
+        }
+        
         //
         // Abort if we have a zero size
         //
@@ -195,6 +200,7 @@ int main (int argc, const char * argv[]) {
             NSLog(@"First image had a zero dimension. Unable to choose an output size.");
             exit(1);
         }
+        
         
         NSString *outputPath = [Options output];
         
