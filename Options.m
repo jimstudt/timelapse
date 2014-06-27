@@ -16,8 +16,8 @@ static BOOL noDups = NO;
 static NSString *codec = nil;
 static NSString *profile = nil;
 static NSString *level = nil;
-static NSNumber *width = nil;
-static NSNumber *height = nil;
+static int width = 0;
+static int height = 0;
 static NSNumber *quality = nil;
 static NSNumber *averageBitRate = nil;
 static int framesPerSecond = 30;
@@ -29,8 +29,8 @@ static int framesPerSecond = 30;
 +(NSString *)output { return outputName; }
 +(NSString *const)codec { return codec; }
 +(NSString *const)profile {return profile; }
-+(NSNumber *const)width{ return width; }
-+(NSNumber *const)height { return height; }
++(int)width{ return width; }
++(int)height { return height; }
 +(NSString *const)level { return level; }
 +(NSNumber *const)quality { return quality; }  // jpeg only
 +(NSNumber *const)averageBitRate {return averageBitRate; } // h.264 only
@@ -106,10 +106,10 @@ static void usage(const char *name, int error) {
                 profile = @(optarg);
                 break;
             case 'W':
-                width = @([@(optarg) doubleValue]);
+                width = atoi(optarg);
                 break;
             case 'H':
-                height = @([@(optarg) doubleValue]);
+                height = atoi(optarg);
                 break;
             case 'l':
                 level = @(optarg);

@@ -43,7 +43,6 @@ static NSDictionary *getVideoSettings(NSSize size)
             }
             if (profileLevel != nil) compression[AVVideoProfileLevelKey] = profileLevel;
         }
-        NSLog(@"Selected Sizes: %@, %@", @(size.width), @(size.height));
         return @{ AVVideoCodecKey: AVVideoCodecH264,
                   AVVideoWidthKey: @(size.width),
                   AVVideoHeightKey: @(size.height),
@@ -188,9 +187,16 @@ int main (int argc, const char * argv[]) {
             }
         }
         
-        if ( [[Options width] floatValue] > 1 && [[Options height] floatValue] > 1 ) {
-            size = NSMakeSize([[Options width] floatValue], [[Options height] floatValue]);
-            
+        if ( [Options width] && [Options height] ) {
+            size = NSMakeSize([Options width], [Options height]);
+        } else if ( [Options width] && ([Options height]==0) ) {
+            // just a width, work it out
+            int newHeight = [Options width] * (int)size.height / (int)size.width;
+            size = NSMakeSize( [Options width], newHeight);
+        } else if ( [Options height] && ([Options width]==0)) {
+            // just a height, work it out
+            int newWidth = [Options height] * (int)size.width / (int)size.height;
+            size = NSMakeSize( newWidth, [Options height]);
         }
         
         //
