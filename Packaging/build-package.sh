@@ -13,7 +13,7 @@ if ( echo "${BUILT_PRODUCTS_DIR}" | fgrep "/Debug/" ) ;then
     exit 1
 fi
 
-CERTIFICATE_CN="3rd Party Mac Developer Installer: James Studt (HJS98U3F75)"
+CERTIFICATE_CN="Developer ID Installer: James Studt (HJS98U3F75)"
 
 VERSION=$(sed -E -n -e 's/#define *TIMELAPSE_VERSION *"([^"]*)"/\1/p' ${SOURCE_ROOT}/Version.h)
 PACKAGE_NAME=`echo "$PRODUCT_NAME" | sed "s/ /_/g"`
