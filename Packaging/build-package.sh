@@ -7,7 +7,6 @@
 #  Copyright (c) 2014 Lunarware. All rights reserved.
 
 set -e
-set -x
 
 if ( echo "${BUILT_PRODUCTS_DIR}" | fgrep "/Debug/" ) ;then
     echo You are trying to build a package of a Debug release. Not what you want.
