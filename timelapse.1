@@ -60,6 +60,10 @@ The output filename. This is required. The filename suffix determines the format
 mp4, m4v, and mov. Unrecognized extensions use the MPEG4 filetype.
 .It Fl p Ar name , Fl Fl profile Ns = Ns Ar name
 Set the h.264 profile. Valid choices are baseline, main, and high. The default is main.
+.It Fl P Ar filename , Fl Fl poster Ns = Ns Ar filename
+The poster filename. The poster image is a JPEG taken from around the middle of the sequence. It will be
+resized to the same dimensions as the movie. It will not be written if there are no valid images
+after the midpoint.
 .It Fl q Ar num , Fl Fl quality Ns = Ns Ar num
 Set the JPEG quality. e.g. --quality=0.8
 .It Fl v , Fl Fl verbose

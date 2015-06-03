@@ -21,6 +21,7 @@ static int height = 0;
 static NSNumber *quality = nil;
 static NSNumber *averageBitRate = nil;
 static int framesPerSecond = 30;
+static NSString *posterFile = nil;
 
 @implementation Options
 
@@ -35,6 +36,7 @@ static int framesPerSecond = 30;
 +(NSNumber *const)quality { return quality; }  // jpeg only
 +(NSNumber *const)averageBitRate {return averageBitRate; } // h.264 only
 +(int)framesPerSecond { return framesPerSecond; }
++(NSString *)posterFile { return posterFile;}
 
 static void usage(const char *name, int error)  __attribute__((__noreturn__));
 static void usage(const char *name, int error) {
@@ -51,6 +53,7 @@ static void usage(const char *name, int error) {
             "  -H | --height                   output height\n"
             "  -o fname | --output fname       specify output file - required\n"
             "                                  end with .mp4 .m4v or .mov to select format\n"
+            "  -P fname | --poster fname       path for a JPEG image from near the middle of the movie\n"
             "  -f fps | --framesPerSecond fps  frames per second, must be an integer, default is 30\n"
             "  -n | --nodups                   skip duplicated frames\n"
             "  -c codec | --codec name         codec name: h264 jpeg prores4444 prores422\n"
@@ -64,7 +67,7 @@ static void usage(const char *name, int error) {
 
 +(void)parseArgc:(int *)argc argv:(const char *[])argv
 {
-    static const char *optstring = "v?nho:f:c:p:W:H:l:b:q:";
+    static const char *optstring = "v?nho:f:c:p:W:H:l:b:q:P:";
     static const struct option longopts[] = {
         { "verbose", no_argument, 0, 'v'},
         { "help",    no_argument, 0, 'h'},
@@ -78,6 +81,7 @@ static void usage(const char *name, int error) {
         { "bitrate",  required_argument, 0, 'b'},
         { "quality",  required_argument, 0, 'q'},
         { "nodup", no_argument, 0, 'n'},
+        { "poster", required_argument, 0, 'P'},
         {0,0,0,0}
     };
     int ch;
@@ -119,6 +123,9 @@ static void usage(const char *name, int error) {
                 break;
             case 'b':
                 averageBitRate = @([@(optarg) doubleValue]*1000000.0);
+                break;
+            case 'P':
+                posterFile = @(optarg);
                 break;
             default:
                 usage( argv[0], 1);

@@ -177,6 +177,14 @@ int main (int argc, const char * argv[]) {
             exit(0);
         }
         
+        // If we have a posterfile name, then work out the index of the middle frame
+        __block UInt64 posterIndex = UINT64_MAX;
+        NSString *posterFile = [Options posterFile];
+        if ( posterFile) {
+            posterIndex = urls.count/2;
+            // might be nice to check if I can write the file here
+        }
+        
         // Get size from first available image
         NSSize size = NSZeroSize;
         for (NSURL *file in urls) {
@@ -285,6 +293,23 @@ int main (int argc, const char * argv[]) {
                                                  withPresentationTime:CMTimeMake(frame++,framesPerSecond)];
                                 CFRelease(pBuf);
                                 if ( [Options verbose] ) NSLog(@"did image %@", file);
+                                
+                                if (nextUrl > posterIndex) {
+                                    NSImage *small = [[NSImage alloc] initWithSize: size];
+                                    [small lockFocus];
+                                    [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
+                                    [img drawInRect:NSMakeRect(0, 0, size.width, size.height)];
+                                    [small unlockFocus];
+
+                                    NSBitmapImageRep *sbm = [NSBitmapImageRep imageRepWithData:[small TIFFRepresentation]];
+                                    NSData *jdata = [sbm representationUsingType:NSJPEGFileType properties:@{}];
+                                    
+                                    NSError *err = 0;
+                                    if ( ![jdata writeToFile:posterFile options:NSDataWritingAtomic error:&err]) {
+                                        NSLog(@"Unable to write poster image to %@: %@", posterFile, [err localizedDescription]);
+                                    }
+                                    posterIndex = UINT64_MAX;
+                                }
                             }
                         } else {
                             if ( [Options verbose] ) NSLog(@"skipped %@", file);

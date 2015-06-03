@@ -27,5 +27,6 @@
 // i skip some h.264 keyframe options
 
 +(BOOL)noDuplicates;
++(NSString *)posterFile;
 
 @end
