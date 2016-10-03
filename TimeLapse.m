@@ -140,7 +140,7 @@ static CVPixelBufferRef newPixelBufferFromNSImage(NSImage* image)
     NSGraphicsContext* imageContext = [NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:NO];
     [NSGraphicsContext saveGraphicsState];
     [NSGraphicsContext setCurrentContext:imageContext];
-    [image drawAtPoint:NSMakePoint(0.0, 0.0) fromRect:NSMakeRect(0, 0, [image size].width, [image size].height) operation:NSCompositeCopy fraction:1.0];
+    [image drawAtPoint:NSMakePoint(0.0, 0.0) fromRect:NSMakeRect(0, 0, [image size].width, [image size].height) operation:NSCompositingOperationCopy fraction:1.0];
     [NSGraphicsContext restoreGraphicsState];
     CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
     CFRelease(context);
@@ -290,7 +290,7 @@ int main (int argc, const char * argv[]) {
                             } else {
                                 CVPixelBufferRef pBuf = newPixelBufferFromNSImage(img);
                                 [pixelBufferAdaptor appendPixelBuffer:pBuf
-                                                 withPresentationTime:CMTimeMake(frame++,framesPerSecond)];
+                                                 withPresentationTime:CMTimeMake(frame++,(int)framesPerSecond)];
                                 CFRelease(pBuf);
                                 if ( [Options verbose] ) NSLog(@"did image %@", file);
                                 
