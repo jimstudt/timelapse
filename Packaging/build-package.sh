@@ -36,4 +36,4 @@ pkgbuild --root "${FAKEROOT}" \
     --sign "${CERTIFICATE_CN}" \
     "${COMPONENT_PACKAGE}"
 
-
+cp ${COMPONENT_PACKAGE} ${SOURCE_ROOT}/build/

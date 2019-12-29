@@ -30,9 +30,16 @@ This project is set up so I can build signed packages which, presumably, anyone 
 
 The steps I go through to make the package are:
 
-''''
-xcodebuild clean install
-''''
+- build the **timelapse** target
+- build the **Installer Package** target
+- The unsigned package is in `build/timelapse.pkg`
+
+You probably want to stop here, but I will go on and do this to make a notarized package.
+
+- run the `Packaging/notarize.sh` script.
+- wait for the confirmation email from Apple.
+- run the `Packaging/staple.sh` script.
+- The finished package is in `build/timelapse.pkg`
 
 ## History
 

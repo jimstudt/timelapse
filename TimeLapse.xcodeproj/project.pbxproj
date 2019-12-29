@@ -45,6 +45,8 @@
 		38BCD0D9106DBD81001322EE /* Options.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Options.m; sourceTree = "<group>"; };
 		38C168651880BEE600FA1225 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		38C168661880BEE600FA1225 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		38D8D59123B9555D003CC655 /* notarize.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = notarize.sh; path = Packaging/notarize.sh; sourceTree = "<group>"; };
+		38D8D59223B9588C003CC655 /* staple.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = staple.sh; path = Packaging/staple.sh; sourceTree = "<group>"; };
 		8DD76FA10486AA7600D96B5E /* timelapse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = timelapse; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859EA3029092ED04C91782 /* timelapse.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = timelapse.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				383B0C9E18AB13A700C2883D /* build-package.sh */,
+				38D8D59123B9555D003CC655 /* notarize.sh */,
+				38D8D59223B9588C003CC655 /* staple.sh */,
 			);
 			name = Packaging;
 			sourceTree = "<group>";
@@ -128,7 +132,7 @@
 			buildPhases = (
 			);
 			buildToolPath = "${SOURCE_ROOT}/Packaging/build-package.sh";
-			buildWorkingDirectory = /Users/jim/Documents/coding/timelapse/Packaging;
+			buildWorkingDirectory = "${SOURCE_ROOT}/Packaging";
 			dependencies = (
 				383B0C9B18AB100A00C2883D /* PBXTargetDependency */,
 			);
