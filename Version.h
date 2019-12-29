@@ -9,6 +9,6 @@
 #ifndef TimeLapse_Version_h
 #define TimeLapse_Version_h
 
-#define TIMELAPSE_VERSION "0.3.0"
+#define TIMELAPSE_VERSION "0.3.1"
 
 #endif

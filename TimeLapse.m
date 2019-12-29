@@ -49,6 +49,17 @@ static NSDictionary *getVideoSettings(NSSize size)
                   AVVideoCompressionPropertiesKey: compression,
                   };
     }
+    if ( [codec isEqualToString:@"hevc"]) {
+        NSMutableDictionary *compression = [NSMutableDictionary dictionary];
+        
+        if ( [Options averageBitRate]) compression[AVVideoAverageBitRateKey] = [Options averageBitRate];
+        
+        return @{ AVVideoCodecKey: AVVideoCodecTypeHEVC,
+                  AVVideoWidthKey: @(size.width),
+                  AVVideoHeightKey: @(size.height),
+                  AVVideoCompressionPropertiesKey: compression,
+                  };
+    }
     if ( [codec isEqualToString:@"jpeg"]) {
         NSMutableDictionary *compression = [NSMutableDictionary dictionary];
         if ( [Options quality]) compression[AVVideoQualityKey] = [Options quality];

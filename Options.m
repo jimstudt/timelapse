@@ -56,7 +56,7 @@ static void usage(const char *name, int error) {
             "  -P fname | --poster fname       path for a JPEG image from near the middle of the movie\n"
             "  -f fps | --framesPerSecond fps  frames per second, must be an integer, default is 30\n"
             "  -n | --nodups                   skip duplicated frames\n"
-            "  -c codec | --codec name         codec name: h264 jpeg prores4444 prores422\n"
+            "  -c codec | --codec name         codec name: h264 jpeg prores4444 prores422 hevc\n"
             "  -p profile | --profile name     h.264 profile: baseline main(default) high\n"
             "  -l level | --level name         h.264 level: 3.0 3.1 3.2 4.0 4.1 auto(default)\n"
             "  -b bitrate | --bitrate num      average bit rate in Mbps: e.g. 2.0\n"

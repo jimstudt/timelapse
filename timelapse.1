@@ -18,6 +18,12 @@ path ...             \" arguments
 .Nm
 .Op Fl vn               \" [-vhn]
 .Fl o Ar output       \" [-a path]
+.Fl c Ar hevc
+.Op Fl b Ar bitrate
+path ...             \" arguments
+.Nm
+.Op Fl vn               \" [-vhn]
+.Fl o Ar output       \" [-a path]
 .Fl c Ar jpeg
 .Op Fl q Ar jpeg-quality
 .Op Fl b Ar bitrate
@@ -44,7 +50,7 @@ Note: Not all codecs are compatible with all file types, e.g. some require a .mo
 .It Fl b Ar bitrate , Fl Fl bitrate Ns = Ns Ar bitrate                \"-a flag as a list item
 Set the target bitrate, expressed in megabits per second.
 .It Fl c Ar name , Fl Fl codec Ns = Ns Ar name
-Select the codec for the video file. Supported codecs are h264, jpeg, prores4444, and prores422.
+Select the codec for the video file. Supported codecs are h264, hevc, jpeg, prores4444, and prores422.
 .It Fl f Ar fps , Fl Fl framesPerSeconds Ns = Ns Ar fps
 Set the frames per second. Must be an integer. 30 is the default.
 .It Fl h , Fl Fl help
