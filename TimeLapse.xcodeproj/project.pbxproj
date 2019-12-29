@@ -172,6 +172,7 @@
 				TargetAttributes = {
 					8DD76F960486AA7600D96B5E = {
 						DevelopmentTeam = HJS98U3F75;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -224,6 +225,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = HJS98U3F75;
 				DSTROOT = $SRCROOT/build/pkgroot;
@@ -235,6 +237,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lunarware.timelapse;
 				PRODUCT_NAME = timelapse;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -245,6 +248,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HJS98U3F75;
 				DSTROOT = $SRCROOT/build/pkgroot;
@@ -254,6 +258,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lunarware.timelapse;
 				PRODUCT_NAME = timelapse;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
