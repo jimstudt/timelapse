@@ -24,8 +24,17 @@ You should look at this copy of the man page: http://htmlpreview.github.com/?htt
 
 It is tragically formatted, but you will get the idea.
 
+## Building and Signing
+
+This project is set up so I can build signed packages which, presumably, anyone can install and run on macos 10.15 (catalina) or later. If you are going to build it for yourself you probably want to go into your Project, Targets -> timelapse, Signing & Capabilities, and change "Signing Certificate" to "Sign to Run Locally".
+
+The steps I go through to make the package are:
+
+''''
+xcodebuild clean install
+''''
+
 ## History
 
 I wrote **timelapse** years ago when QtKit was new. Since Mac OS 10.9, Mavericks, QtKit is deprecated, so I rewrote it to use AV Foundation instead. This git repository was restarted from scratch so you don't have to see any of that old cruft.
-
 

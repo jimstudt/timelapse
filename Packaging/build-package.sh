@@ -6,6 +6,7 @@
 #  Created by Jim Studt on 2/11/14.
 #  Copyright (c) 2014 Lunarware. All rights reserved.
 
+set -x
 set -e
 
 if ( echo "${BUILT_PRODUCTS_DIR}" | fgrep "/Debug/" ) ;then

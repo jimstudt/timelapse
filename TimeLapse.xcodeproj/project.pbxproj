@@ -165,6 +165,11 @@
 			attributes = {
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Lunarware;
+				TargetAttributes = {
+					8DD76F960486AA7600D96B5E = {
+						DevelopmentTeam = HJS98U3F75;
+					};
+				};
 			};
 			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "TimeLapse" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -214,14 +219,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = HJS98U3F75;
 				DSTROOT = $SRCROOT/build/pkgroot;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = timelapse_Prefix.pch;
 				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lunarware.timelapse;
 				PRODUCT_NAME = timelapse;
 			};
 			name = Debug;
@@ -232,12 +240,15 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = HJS98U3F75;
 				DSTROOT = $SRCROOT/build/pkgroot;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = timelapse_Prefix.pch;
 				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lunarware.timelapse;
 				PRODUCT_NAME = timelapse;
 			};
 			name = Release;
