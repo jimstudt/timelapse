@@ -43,7 +43,7 @@ static NSDictionary *getVideoSettings(NSSize size)
             }
             if (profileLevel != nil) compression[AVVideoProfileLevelKey] = profileLevel;
         }
-        return @{ AVVideoCodecKey: AVVideoCodecH264,
+        return @{ AVVideoCodecKey: AVVideoCodecTypeH264,
                   AVVideoWidthKey: @(size.width),
                   AVVideoHeightKey: @(size.height),
                   AVVideoCompressionPropertiesKey: compression,
@@ -53,20 +53,20 @@ static NSDictionary *getVideoSettings(NSSize size)
         NSMutableDictionary *compression = [NSMutableDictionary dictionary];
         if ( [Options quality]) compression[AVVideoQualityKey] = [Options quality];
   
-        return @{ AVVideoCodecKey: AVVideoCodecJPEG,
+        return @{ AVVideoCodecKey: AVVideoCodecTypeJPEG,
                   AVVideoWidthKey: @(size.width),
                   AVVideoHeightKey: @(size.height),
                   AVVideoCompressionPropertiesKey: compression,
                   };
     }
     if ( [codec isEqualToString:@"prores4444"]) {
-        return @{ AVVideoCodecKey: AVVideoCodecAppleProRes4444,
+        return @{ AVVideoCodecKey: AVVideoCodecTypeAppleProRes4444,
                   AVVideoWidthKey: @(size.width),
                   AVVideoHeightKey: @(size.height),
                   };
     }
     if ( [codec isEqualToString:@"prores422"]) {
-        return @{ AVVideoCodecKey: AVVideoCodecAppleProRes422,
+        return @{ AVVideoCodecKey: AVVideoCodecTypeAppleProRes422,
                   AVVideoWidthKey: @(size.width),
                   AVVideoHeightKey: @(size.height),
                   };
@@ -137,7 +137,7 @@ static CVPixelBufferRef newPixelBufferFromNSImage(NSImage* image)
     void* baseAddress = CVPixelBufferGetBaseAddress(pixelBuffer);
     size_t bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer);
     CGContextRef context = CGBitmapContextCreate(baseAddress, [image size].width, [image size].height, 8, bytesPerRow, colorSpace, kCGImageAlphaNoneSkipFirst);
-    NSGraphicsContext* imageContext = [NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:NO];
+    NSGraphicsContext* imageContext = [NSGraphicsContext graphicsContextWithCGContext:context flipped:NO];
     [NSGraphicsContext saveGraphicsState];
     [NSGraphicsContext setCurrentContext:imageContext];
     [image drawAtPoint:NSMakePoint(0.0, 0.0) fromRect:NSMakeRect(0, 0, [image size].width, [image size].height) operation:NSCompositingOperationCopy fraction:1.0];
@@ -302,7 +302,7 @@ int main (int argc, const char * argv[]) {
                                     [small unlockFocus];
 
                                     NSBitmapImageRep *sbm = [NSBitmapImageRep imageRepWithData:[small TIFFRepresentation]];
-                                    NSData *jdata = [sbm representationUsingType:NSJPEGFileType properties:@{}];
+                                    NSData *jdata = [sbm representationUsingType:NSBitmapImageFileTypeJPEG properties:@{}];
                                     
                                     NSError *err = 0;
                                     if ( ![jdata writeToFile:posterFile options:NSDataWritingAtomic error:&err]) {
