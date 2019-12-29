@@ -20,6 +20,10 @@ I will not add features until someone asks for them. Feel free to browse the iss
 
 ## Usage
 
+There is a man page which you can read after you install the package. You can see a PDF version of it at https://github.com/jimstudt/timelapse/timelapse.pdf
+
+I regenerate that with `man -t timelapse | pstopdf -o timelapse.pdf` when I do a release.
+
 You should look at this copy of the man page: http://htmlpreview.github.com/?https://raw.github.com/jimstudt/timelapse/master/timelapse.html
 
 It is tragically formatted, but you will get the idea.
