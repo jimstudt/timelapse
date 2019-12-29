@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -169,15 +169,9 @@
 			attributes = {
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Lunarware;
-				TargetAttributes = {
-					8DD76F960486AA7600D96B5E = {
-						DevelopmentTeam = HJS98U3F75;
-						ProvisioningStyle = Manual;
-					};
-				};
 			};
 			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "TimeLapse" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -235,6 +229,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = timelapse_Prefix.pch;
 				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lunarware.timelapse;
 				PRODUCT_NAME = timelapse;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -256,6 +251,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = timelapse_Prefix.pch;
 				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lunarware.timelapse;
 				PRODUCT_NAME = timelapse;
 				PROVISIONING_PROFILE_SPECIFIER = "";
